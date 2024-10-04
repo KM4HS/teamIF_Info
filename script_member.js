@@ -16,6 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+$("#sign_up_btn").click(async function () {
+    window.location.href = "register_page.html";
+})
+
 $("#register_button").click(async function () {
     let name_input = $('#name_input').val();
     let language_input = $('#language_input').val();
@@ -24,6 +28,9 @@ $("#register_button").click(async function () {
     let style_input = $('#style_input').val();
     let free_input = $('#free_input').val();
     let blog_input = $('#blog_input').val();
+    let main_image = $('#main_image').val();
+    let profile_image = $('#profile_image').val();
+
 
     let doc = {
         'name_input': name_input,
@@ -32,14 +39,15 @@ $("#register_button").click(async function () {
         'strength_input': strength_input,
         'style_input': style_input,
         'free_input': free_input,
-        'blog_input': blog_input
+        'blog_input': blog_input,
+        'main_image': main_image,
+        'profile_image': profile_image
     };
 
     await addDoc(collection(db, "TEAMIF_INFO"), doc);
     alert('저장 완료!');
     window.location.href = "index_member.html";
 })
-
 
 let docs = await getDocs(collection(db, "TEAMIF_INFO"));
 docs.forEach((doc) => {
@@ -63,4 +71,3 @@ docs.forEach((doc) => {
     $('#detail_strength').text(strength_input);
     $('#detail_style').text(style_input);
 })
-
