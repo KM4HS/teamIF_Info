@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getDocs, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDRocKqlQ9x4VfWnm2DRcE9gmXkcGkAUU4",
@@ -49,11 +49,13 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-let docs = await getDocs(collection(db, "TEAMIF_INFO"));
-docs.forEach((doc) => {
+$('.detail_view').click(async function(e){
+    let doc_id = e.target.getAttribute('data-doc');
+
+    let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
     let row = doc.data();
 
-    let profile_img_input;
+    let profile_img_input = row['profile_image'];
     let name_input = row['name_input'];
     let language_input = row['language_input'];
     let mbti_input = row['mbti_input'];
