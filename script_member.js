@@ -40,11 +40,12 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-/*
+
 let docs = await getDocs(collection(db, "TEAMIF_INFO"));
 docs.forEach((doc) => {
     let row = doc.data();
 
+    let profile_img_input;
     let name_input = row['name_input'];
     let language_input = row['language_input'];
     let mbti_input = row['mbti_input'];
@@ -52,5 +53,14 @@ docs.forEach((doc) => {
     let style_input = row['style_input'];
     let free_input = row['free_input'];
     let blog_input = row['blog_input'];
+
+    $('#profile_image').src(profile_img_input);
+    $('#detail_name').text(name_input);
+    $('#detail_mbti').text(mbti_input);
+    $('#detail_blog').href(blog_input);
+    $('#detail_free').text(free_input);
+    $('#detail_langs').text(language_input);
+    $('#detail_strength').text(strength_input);
+    $('#detail_style').text(style_input);
 })
-*/
+
