@@ -49,27 +49,81 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-$('.detail_view').click(async function(e){
-    let doc_id = e.target.getAttribute('data-doc');
+$(document).on('click', '.delete_button', async function () {
+    let docId = $(this).data('doc');
+    console.log("Deleting document with ID: ", docId); // 확인용 로그
 
-    let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
-    let row = doc.data();
+    if (!docId) {
+        alert('삭제할 문서 ID를 찾을 수 없습니다.');
+        return;
+    }
 
-    let profile_img_input = row['profile_image'];
-    let name_input = row['name_input'];
-    let language_input = row['language_input'];
-    let mbti_input = row['mbti_input'];
-    let strength_input = row['strength_input'];
-    let style_input = row['style_input'];
-    let free_input = row['free_input'];
-    let blog_input = row['blog_input'];
+    try {
+        await deleteDoc(doc(db, "TEAMIF_INFO", docId));
+        alert('삭제 완료!');
+        $(`#card-${docId}`).remove(); // 삭제된 카드도 화면에서 제거
+        window.location.reload();
+    } catch (error) {
+        console.error("Error deleting document: ", error);
+        alert('문서 삭제 중 오류가 발생했습니다.');
+    }
+});
 
-    $('#profile_image').src(profile_img_input);
-    $('#detail_name').text(name_input);
-    $('#detail_mbti').text(mbti_input);
-    $('#detail_blog').href(blog_input);
-    $('#detail_free').text(free_input);
-    $('#detail_langs').text(language_input);
-    $('#detail_strength').text(strength_input);
-    $('#detail_style').text(style_input);
-})
+async function loadTeamMembers() {
+    const querySnapshot = await getDocs(collection(db, "TEAMIF_INFO"));
+    querySnapshot.forEach((docSnapshot) => {
+        const data = docSnapshot.data();
+        const docId = docSnapshot.id;
+
+        let cardHTML = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${data.profile_image}" class="card-img-top" alt="${data.name_input}" style="object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">${data.name_input}</h5>
+                        <div class="card_down">
+                            <div class="profile_img">
+                                <img src="${data.profile_image}" alt="${data.name_input}" />
+                            </div>
+                            <div class="profile_txt">
+                                <span id="profile_name">${data.name_input}</span>
+                                <span id="profile_mbti">${data.mbti_input}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active detail_view" type="button" onclick="openclose(); loadDetail('${docId}');">상세 보기</li>
+                        <li class="breadcrumb-item active" type="button" data-doc="${docId}">수정</li>
+                        <li class="breadcrumb-item active delete_button" type="button" data-doc="${docId}">삭제</li>
+                    </ol>
+                </div>
+            </div>`;
+
+        $('#cards_member .row').append(cardHTML);
+    });
+}
+
+async function loadDetail(docId) {
+    const docRef = doc(db, "TEAMIF_INFO", docId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        const data = docSnap.data();
+        $('#profile_image').attr('src', data.profile_image);
+        $('#detail_name').text(data.name_input);
+        $('#detail_mbti').text(data.mbti_input);
+        $('#detail_blog').attr('href', data.blog_input);
+        $('#detail_free').text(data.free_input);
+        $('#detail_langs').text(data.language_input);
+        $('#detail_strength').text(data.strength_input);
+        $('#detail_style').text(data.style_input);
+    } else {
+        alert("해당 팀원 정보를 찾을 수 없습니다.");
+    }
+}
+
+window.loadDetail = loadDetail;
+
+$(document).ready(function () {
+    loadTeamMembers();
+});
