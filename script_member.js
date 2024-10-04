@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getDocs, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDRocKqlQ9x4VfWnm2DRcE9gmXkcGkAUU4",
@@ -49,17 +49,27 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-    /*
-    let docs = await getDocs(collection(db, "TEAMIF_INFO"));
-    docs.forEach((doc) => {
-        let row = doc.data();
-    
-        let name_input = row['name_input'];
-        let language_input = row['language_input'];
-        let mbti_input = row['mbti_input'];
-        let strength_input = row['strength_input'];
-        let style_input = row['style_input'];
-        let free_input = row['free_input'];
-        let blog_input = row['blog_input'];
-    })
-    */
+$('.detail_view').click(async function(e){
+    let doc_id = e.target.getAttribute('data-doc');
+
+    let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
+    let row = doc.data();
+
+    let profile_img_input = row['profile_image'];
+    let name_input = row['name_input'];
+    let language_input = row['language_input'];
+    let mbti_input = row['mbti_input'];
+    let strength_input = row['strength_input'];
+    let style_input = row['style_input'];
+    let free_input = row['free_input'];
+    let blog_input = row['blog_input'];
+
+    $('#profile_image').src(profile_img_input);
+    $('#detail_name').text(name_input);
+    $('#detail_mbti').text(mbti_input);
+    $('#detail_blog').href(blog_input);
+    $('#detail_free').text(free_input);
+    $('#detail_langs').text(language_input);
+    $('#detail_strength').text(strength_input);
+    $('#detail_style').text(style_input);
+})
