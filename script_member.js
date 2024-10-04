@@ -49,8 +49,10 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
+// 멤버 상세보기 버튼 클릭 -> 상세보기 페이지에 정보 출력
+// TODO: 상세보기창 토글기능 필요
 $('.detail_view').click(async function(e){
-    let doc_id = e.target.getAttribute('data-doc');
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
 
     let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
     let row = doc.data();
@@ -73,3 +75,42 @@ $('.detail_view').click(async function(e){
     $('#detail_strength').text(strength_input);
     $('#detail_style').text(style_input);
 })
+
+$('.detail_update').click(function (e){
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
+
+    //TODO: 수정 적용 function(doc_id) 필요
+    window.location.href = "index_member.html";
+    update_member(doc_id);
+})
+
+// 멤버 정보 수정 함수
+async function update_member(doc_id){
+    let doc_detail = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
+    let row = doc_detail.data();
+
+    $('#name_input').placeholder(row['name_input']);
+    let language_input = $('#language_input').val();
+    let mbti_input = $('#mbti_input').val();
+    let strength_input = $('#strength_input').val();
+    let style_input = $('#style_input').val();
+    let free_input = $('#free_input').val();
+    let blog_input = $('#blog_input').val();
+    let main_image = $('#main_image').val();
+    let profile_image = $('#profile_image').val();
+
+
+    let doc = {
+        'name_input': name_input,
+        'language_input': language_input,
+        'mbti_input': mbti_input,
+        'strength_input': strength_input,
+        'style_input': style_input,
+        'free_input': free_input,
+        'blog_input': blog_input,
+        'main_image': main_image,
+        'profile_image': profile_image
+    };
+
+    await addDoc(collection(db, "TEAMIF_INFO"), doc);
+}
