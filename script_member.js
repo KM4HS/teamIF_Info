@@ -16,6 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+$("#sign_up_btn").click(async function () {
+    window.location.href = "register_page.html";
+})
+
 $("#register_button").click(async function () {
     let name_input = $('#name_input').val();
     let language_input = $('#language_input').val();
@@ -24,6 +28,9 @@ $("#register_button").click(async function () {
     let style_input = $('#style_input').val();
     let free_input = $('#free_input').val();
     let blog_input = $('#blog_input').val();
+    let main_image = $('#main_image').val();
+    let profile_image = $('#profile_image').val();
+
 
     let doc = {
         'name_input': name_input,
@@ -32,7 +39,9 @@ $("#register_button").click(async function () {
         'strength_input': strength_input,
         'style_input': style_input,
         'free_input': free_input,
-        'blog_input': blog_input
+        'blog_input': blog_input,
+        'main_image': main_image,
+        'profile_image': profile_image
     };
 
     await addDoc(collection(db, "TEAMIF_INFO"), doc);
@@ -40,17 +49,17 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-/*
-let docs = await getDocs(collection(db, "TEAMIF_INFO"));
-docs.forEach((doc) => {
-    let row = doc.data();
-
-    let name_input = row['name_input'];
-    let language_input = row['language_input'];
-    let mbti_input = row['mbti_input'];
-    let strength_input = row['strength_input'];
-    let style_input = row['style_input'];
-    let free_input = row['free_input'];
-    let blog_input = row['blog_input'];
-})
-*/
+    /*
+    let docs = await getDocs(collection(db, "TEAMIF_INFO"));
+    docs.forEach((doc) => {
+        let row = doc.data();
+    
+        let name_input = row['name_input'];
+        let language_input = row['language_input'];
+        let mbti_input = row['mbti_input'];
+        let strength_input = row['strength_input'];
+        let style_input = row['style_input'];
+        let free_input = row['free_input'];
+        let blog_input = row['blog_input'];
+    })
+    */
