@@ -9,25 +9,32 @@
     <link rel="stylesheet" href="./header_style.css" />
     <style>
         .home_image {
-            height: 350px;
+            height: 430px;
+            width: 100%;
+            margin: 0px;
 
             background-image: url("https://velog.velcdn.com/images/dbtmdgml98/post/77fbd0ff-3d73-4822-814d-976bcaead3a3/image.png");
-            background-size: cover;
+            object-fit: cover;
             background-position: center;
-        } 
+        }
 
         .home {
-            /*background-color: green;*/
             text-align: center;
-            
+
             width: 600px;
             margin: 30px auto 30px auto;
             padding: 20px;
 
-            box-shadow: 0px 0px 4px 0px blue;
+            box-shadow: 0px 0px 4px 0px black;
             border-radius: 5px;
-            
+
         }
+
+        body {
+            margin: 0px;
+        }
+
+        
     </style>
 </head>
 
@@ -36,11 +43,12 @@
     <header class="header_wrap">
         <a href="./index_home.html"><img src="./if.png" class="header_logo" /></a>
         <div class="header_nav">
-          <p><a href="./index_member.html">팀원 소개</a></p>
-          <p><a href="./news_index.html">뉴스 피드</a></p>
-          <p><a href="https://teamsparta.notion.site/14-IF-1112dc3ef51481cabceed33d03e6a5d7" target="_blank">팀 노션</a></p>
+            <p><a href="./index_member.html">팀원 소개</a></p>
+            <p><a href="./news_index.html">뉴스 피드</a></p>
+            <p><a href="https://teamsparta.notion.site/14-IF-1112dc3ef51481cabceed33d03e6a5d7" target="_blank">팀 노션</a>
+            </p>
         </div>
-      </header> 
+    </header>
     <div class="home_image"></div>
 
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
@@ -52,7 +60,7 @@
         </div>
     </div>
 
-    
+
 
 </body>
 
