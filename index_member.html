@@ -91,6 +91,11 @@
             flex-direction: column;
         }
     </style>
+    <script>
+        function openclose(){
+            $('#card_toggle').toggle();
+        }
+    </script>
 </head>
 
 <body>
@@ -103,11 +108,11 @@
             </p>
         </div>
     </header>
-    <div class="card_wrap">
+    <div class="card_wrap" >
         <hr width="100%" color="lightgray">
         <h1>Introvert Feeling</h1>
         <hr width="100%" color="lightgray">
-        <div class="member_detail">
+        <div class="member_detail" id="card_toggle">
             <div style="text-align: center;">
                 <div class="detail_img">
                     <img id="profile_image" src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
