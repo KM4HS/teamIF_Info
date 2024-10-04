@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import { getDocs, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getDocs, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDRocKqlQ9x4VfWnm2DRcE9gmXkcGkAUU4",
@@ -69,36 +69,52 @@ $('.detail_view').click(async function(e){
     $('#profile_image').src(profile_img_input);
     $('#detail_name').text(name_input);
     $('#detail_mbti').text(mbti_input);
-    $('#detail_blog').href(blog_input);
+    $('#detail_blog').attr('href', blog_input);
     $('#detail_free').text(free_input);
     $('#detail_langs').text(language_input);
     $('#detail_strength').text(strength_input);
     $('#detail_style').text(style_input);
 })
 
-$('.detail_update').click(function (e){
+// 수정 버튼 클릭
+$('#update_btn').click(async function (e){
     let doc_id = e.target.parentElement.getAttribute('data-doc');
+    let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
+    let row = doc.data();
 
-    //TODO: 수정 적용 function(doc_id) 필요
-    window.location.href = "index_member.html";
-    update_member(doc_id);
+    const name = row['name_input'];
+    const mbti = row['mbti_input'];
+    const free = row['free_input'];
+    const language = row['language_input'];
+    const strength = row['strength_input'];
+    const style = row['style_input'];
+
+    // const profile_image = row['profile_image'];
+    // const main_image = row['main_image'];
+
+    // $('#profile_image').src(profile_img_input);
+    // $('#detail_blog').attr('href', blog_input);
+
+    $('#detail_name').html(`<input id='name_input' value='${name}'>`);
+    $('#detail_mbti').html(`<input id='mbti_input' value='${mbti}'>`);
+    $('#detail_free').html(`<input id='free_input' value='${free}'>`);
+    $('#detail_langs').html(`<input id='language_input' value='${language}'>`);
+    $('#detail_strength').html(`<input id='strength_input' value='${strength}'>`);
+    $('#detail_style').html(`<input id='style_input' value='${style}'>`);
+
+    $('#update_btn').html(`<button id="update_done_btn" class="btn btn-dark" type="button" style="margin-left:auto" data-doc="${doc_id}">수정 완료</button>`);
 })
 
-// 멤버 정보 수정 함수
-async function update_member(doc_id){
-    let doc_detail = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
-    let row = doc_detail.data();
+// -> 수정 완료 버튼 클릭
+$('#update_done_btn').click(async function(e) {
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
 
-    $('#name_input').placeholder(row['name_input']);
+    let name_input = $('#name_input').val();
     let language_input = $('#language_input').val();
     let mbti_input = $('#mbti_input').val();
     let strength_input = $('#strength_input').val();
     let style_input = $('#style_input').val();
     let free_input = $('#free_input').val();
-    let blog_input = $('#blog_input').val();
-    let main_image = $('#main_image').val();
-    let profile_image = $('#profile_image').val();
-
 
     let doc = {
         'name_input': name_input,
@@ -107,10 +123,9 @@ async function update_member(doc_id){
         'strength_input': strength_input,
         'style_input': style_input,
         'free_input': free_input,
-        'blog_input': blog_input,
-        'main_image': main_image,
-        'profile_image': profile_image
     };
 
-    await addDoc(collection(db, "TEAMIF_INFO"), doc);
-}
+    await updateDoc(doc(db, "TEAMIF_INFO", doc_id), doc);
+    alert('저장 완료!');
+    window.location.href = "index_member.html";
+})

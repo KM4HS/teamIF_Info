@@ -70,6 +70,7 @@
             border-radius: 8px;
             border: 1px solid rgba(0, 0, 0, .125);
         }
+
         .detail_img {
             width: 100px;
             height: 100px;
@@ -92,7 +93,7 @@
         }
     </style>
     <script>
-        function openclose(){
+        function openclose() {
             $('#card_toggle').toggle();
         }
     </script>
@@ -108,33 +109,37 @@
             </p>
         </div>
     </header>
-    <div class="card_wrap" >
+    <div class="card_wrap">
         <hr width="100%" color="lightgray">
         <h1>Introvert Feeling</h1>
         <hr width="100%" color="lightgray">
-        <div class="member_detail" id="card_toggle">
-            <div style="text-align: center;">
-                <div class="detail_img">
-                    <img id="profile_image" src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        <div class="detail" id="card_toggle" style="display: flex; flex-direction: column;">
+            <div class="member_detail">
+                <div style="text-align: center;">
+                    <div class="detail_img">
+                        <img id="profile_image"
+                            src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    </div>
+                    <h5 id="detail_name">이름</h5>
+                    <p id="detail_mbti">MBTI</p>
+                    <a id="detail_blog" href="..." style="text-decoration: none; color: gray">개발 블로그</a>
                 </div>
-                <h5 id="detail_name">이름</h5>
-                <p id="detail_mbti">MBTI</p>
-                <a id="detail_blog" href="..." style="text-decoration: none; color: gray">개발 블로그</a>
+                <div class="detail_text">
+                    <h4>" <span id="detail_free">한마디</span> "</h4>
+                    <h5>사용 언어</h5>
+                    <span id="detail_langs">예시</span><br>
+                    <h5>장점</h5>
+                    <span id="detail_strength">아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                        좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        !!!!!!!!!!!!!!!!!
+                    </span><br>
+                    <h5>협업 스타일</h5>
+                    <span id="detail_style">아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                        좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        !!!!!!!!!!!!!!!!!</span>
+                </div>
             </div>
-            <div class="detail_text">
-                <h4>" <span id="detail_free">한마디</span> "</h4>
-                <h5>사용 언어</h5>
-                <span id="detail_langs">예시</span><br>
-                <h5>장점</h5>
-                <span id="detail_strength">아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
-                    좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    !!!!!!!!!!!!!!!!!
-                </span><br>
-                <h5>협업 스타일</h5>
-                <span id="detail_style">아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
-                    좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    !!!!!!!!!!!!!!!!!</span>
-            </div>
+            <button id="update_btn" class="btn btn-dark" type="button" style="margin-left:auto">수정</button>
         </div>
         <div id="cards_member">
             <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100%;">
@@ -160,7 +165,6 @@
                     </div>
                     <ol class="breadcrumb" style="justify-content: flex-end;" data-doc="...">
                         <li class="breadcrumb-item active detail_view" type="button">상세 보기</li>
-                        <li class="breadcrumb-item active detail_update" type="button">수정</li>
                         <li class="breadcrumb-item active" type="button">삭제</li>
                     </ol>
                 </div>
