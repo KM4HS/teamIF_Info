@@ -16,6 +16,48 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+window.loadDetail = loadDetail;
+
+const querySnapshot = await getDocs(collection(db, "TEAMIF_INFO"));
+querySnapshot.forEach((docSnapshot) => {
+    const data = docSnapshot.data();
+    const docId = docSnapshot.id;
+
+    let main_image = data['main_image'];
+    let name = data['name_input'];
+    let profile_image = data['profile_image'];
+    let free = data['free_input'];
+    let mbti = data['mbti_input'];
+
+    // 이미지 예외처리
+    let url = "https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+    let cardHTML = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${url}" class="card-img-top" style="object-fit: cover;"/>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">${free}</h5>
+                        <div class="card_down">
+                            <div class="profile_img">
+                                <img src="${url}"/>
+                            </div>
+                            <div class="profile_txt">
+                                <span id="profile_name">${name}</span>
+                                <span id="profile_mbti">${mbti}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ol class="breadcrumb" style="justify-content: flex-end;" data-doc="${docId}">
+                    <li class="breadcrumb-item active detail_view" type="button">상세 보기</li>
+                    <li class="breadcrumb-item active delete_button" type="button">삭제</li>
+                </ol>
+            </div>`;
+    
+    $('#cards_member_row').append(cardHTML);
+});
+
 $("#sign_up_btn").click(async function () {
     window.location.href = "register_page.html";
 })
@@ -49,8 +91,8 @@ $("#register_button").click(async function () {
     window.location.href = "index_member.html";
 })
 
-$(document).on('click', '.delete_button', async function () {
-    let docId = $(this).data('doc');
+$('.delete_button').click(async function (e) {
+    let docId = e.target.parentElement.getAttribute('data-doc');
     console.log("Deleting document with ID: ", docId); // 확인용 로그
 
     if (!docId) {
@@ -71,11 +113,14 @@ $(document).on('click', '.delete_button', async function () {
 
 // 멤버 상세보기 버튼 클릭 -> 상세보기 페이지에 정보 출력
 // TODO: 상세보기창 토글기능 필요
-$('.detail_view').click(async function(e){
-    let doc_id = e.target.parentElement.getAttribute('data-doc');    
+$('.detail_view').click(async function (e) {
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
 
-    $('#profile_image').src(profile_img_input);
-    $('#detail_name').text(name_input);
+    let array = fun(name, mbti)
+
+    $('#profile_image').attr('src','profile_img_input');
+    debugger
+    $('#detail_name').text(name);
     $('#detail_mbti').text(mbti_input);
     $('#detail_blog').attr('href', blog_input);
     $('#detail_free').text(free_input);
@@ -85,7 +130,7 @@ $('.detail_view').click(async function(e){
 })
 
 // 수정 버튼 클릭
-$('#update_btn').click(async function (e){
+$('#update_btn').click(async function (e) {
     let doc_id = e.target.parentElement.getAttribute('data-doc');
     let doc = await getDoc(doc(db, 'TEAMIF_INFO', doc_id));
     let row = doc.data();
@@ -114,7 +159,7 @@ $('#update_btn').click(async function (e){
 })
 
 // -> 수정 완료 버튼 클릭
-$('#update_done_btn').click(async function(e) {
+$('#update_done_btn').click(async function (e) {
     let doc_id = e.target.parentElement.getAttribute('data-doc');
 
     let name_input = $('#name_input').val();
@@ -138,39 +183,7 @@ $('#update_done_btn').click(async function(e) {
     window.location.href = "index_member.html";
 })
 
-async function loadTeamMembers() {
-    const querySnapshot = await getDocs(collection(db, "TEAMIF_INFO"));
-    querySnapshot.forEach((docSnapshot) => {
-        const data = docSnapshot.data();
-        const docId = docSnapshot.id;
 
-        let cardHTML = `
-            <div class="col">
-                <div class="card h-100">
-                    <img src="${data.profile_image}" class="card-img-top" alt="${data.name_input}" style="object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title" style="font-weight: bold;">${data.name_input}</h5>
-                        <div class="card_down">
-                            <div class="profile_img">
-                                <img src="${data.profile_image}" alt="${data.name_input}" />
-                            </div>
-                            <div class="profile_txt">
-                                <span id="profile_name">${data.name_input}</span>
-                                <span id="profile_mbti">${data.mbti_input}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <ol class="breadcrumb" style="justify-content: flex-end;">
-                        <li class="breadcrumb-item active detail_view" type="button" onclick="openclose(); loadDetail('${docId}');">상세 보기</li>
-                        <li class="breadcrumb-item active" type="button" data-doc="${docId}">수정</li>
-                        <li class="breadcrumb-item active delete_button" type="button" data-doc="${docId}">삭제</li>
-                    </ol>
-                </div>
-            </div>`;
-
-        $('#cards_member .row').append(cardHTML);
-    });
-}
 
 async function loadDetail(docId) {
     const docRef = doc(db, "TEAMIF_INFO", docId);
@@ -191,8 +204,3 @@ async function loadDetail(docId) {
     }
 }
 
-window.loadDetail = loadDetail;
-
-$(document).ready(function () {
-    loadTeamMembers();
-});

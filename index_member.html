@@ -141,38 +141,8 @@
             </div>
             <button id="update_btn" class="btn btn-dark" type="button" style="margin-left:auto">수정</button>
         </div>
-        <div id="cards_member">
-            <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100%;">
-                <div class="col">
-                    <div class="card h-100">
-                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="card-img-top" alt="..." style="object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
-                            <div class="card_down">
-                                <!-- 기본 프로필 이미지 소스 필요  -->
-                                <div class="profile_img">
-                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                        alt="..." />
-                                </div>
-                                <div class="profile_txt">
-                                    <span id="profile_name">이름</span>
-                                    <span id="profile_mbti">MBTI</span>
-                                </div>
-                            </div>
-                        </div>
-                        <ol class="breadcrumb" style="justify-content: flex-end;">
-                            <li class="breadcrumb-item active detail_view" type="button"  onclick="openclose()" data-doc="${docId}">상세 보기</li>
-                            <li class="breadcrumb-item active" type="button" data-doc="${docId}">수정</li>
-                            <li class="breadcrumb-item active delete_button" type="button" data-doc="${docId}">삭제</li>
-                        </ol>
-                    </div>
-                    <ol class="breadcrumb" style="justify-content: flex-end;" data-doc="...">
-                        <li class="breadcrumb-item active detail_view" type="button">상세 보기</li>
-                        <li class="breadcrumb-item active" type="button">삭제</li>
-                    </ol>
-                </div>
+        <div id="cards_member" style="width: 100%">
+            <div id="cards_member_row" class="row row-cols-1 row-cols-md-5 g-4">
             </div>
         </div>
         <button id="sign_up_btn" type="button" class="btn btn-outline-secondary btn-lg">가입하기</button>
