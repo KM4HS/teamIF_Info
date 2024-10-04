@@ -17,34 +17,72 @@
             gap: 30px;
         }
 
-        .card-img-top{
+        .card-img-top {
             height: 100%;
         }
-        .card_down{
+
+        .card_down {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 10px;
         }
-        .profile_img{
+
+        .profile_img {
             width: 35px;
             height: 35px;
             border-radius: 70%;
             overflow: hidden;
         }
-        .profile_img > img{
+
+        .profile_img>img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .profile_txt{
+
+        .profile_txt {
             display: flex;
             flex-direction: column;
         }
-        #sign_up_btn{
+
+        #sign_up_btn {
             margin-top: 20px;
         }
 
+        .member_detail {
+            width: 500px;
+            display: flex;
+            flex-direction: row;
+            align-items: top;
+            padding: 10px;
+            gap: 20px;
+
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .detail_img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .detail_img>img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            text-align: center;
+        }
+
+        .detail_text {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: even;
+        }
     </style>
 </head>
 
@@ -52,26 +90,49 @@
     <hr width="100%" color="lightgray">
     <h1>Introvert Feeling</h1>
     <hr width="100%" color="lightgray">
+    <div class="member_detail">
+        <div style="text-align: center;">
+            <div class="detail_img">
+                <img
+                    src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            </div>
+            <h5>이름</h5>
+        </div>
+        <div class="detail_text">
+            <h5>사용 언어</h5>
+            <span>예시</span><br>
+            <h5>장점</h5>
+            <span>아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                !!!!!!!!!!!!!!!!!
+            </span><br>
+            <h5>협업 스타일</h5>
+            <span>아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                !!!!!!!!!!!!!!!!!</span>
+        </div>
+    </div>
     <div id="cards_member">
         <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100%;">
             <div class="col">
                 <div class="card h-100">
                     <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="..."
-                    style="object-fit: cover;">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="card-img-top" alt="..." style="object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
                         <div class="card_down">
                             <!-- 기본 프로필 이미지 소스 필요  -->
                             <div class="profile_img">
-                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..."/>
+                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="..." />
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">이름</span>
                                 <span id="profile_mbti">MBTI</span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <ol class="breadcrumb" style="justify-content: flex-end;">
                     <li class="breadcrumb-item active" type="button">수정</li>
@@ -81,21 +142,22 @@
             <div class="col">
                 <div class="card h-100">
                     <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="..."
-                    style="object-fit: cover;">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="card-img-top" alt="..." style="object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
                         <div class="card_down">
                             <!-- 기본 프로필 이미지 소스 필요  -->
                             <div class="profile_img">
-                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..."/>
+                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="..." />
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">이름</span>
                                 <span id="profile_mbti">MBTI</span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <ol class="breadcrumb" style="justify-content: flex-end;">
                     <li class="breadcrumb-item active" type="button">수정</li>
@@ -105,21 +167,22 @@
             <div class="col">
                 <div class="card h-100">
                     <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="..."
-                    style="object-fit: cover;">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="card-img-top" alt="..." style="object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
                         <div class="card_down">
                             <!-- 기본 프로필 이미지 소스 필요  -->
                             <div class="profile_img">
-                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..."/>
+                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="..." />
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">이름</span>
                                 <span id="profile_mbti">MBTI</span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <ol class="breadcrumb" style="justify-content: flex-end;">
                     <li class="breadcrumb-item active" type="button">수정</li>
@@ -129,21 +192,22 @@
             <div class="col">
                 <div class="card h-100">
                     <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="..."
-                    style="object-fit: cover;">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="card-img-top" alt="..." style="object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
                         <div class="card_down">
                             <!-- 기본 프로필 이미지 소스 필요  -->
                             <div class="profile_img">
-                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..."/>
+                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="..." />
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">이름</span>
                                 <span id="profile_mbti">MBTI</span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <ol class="breadcrumb" style="justify-content: flex-end;">
                     <li class="breadcrumb-item active" type="button">수정</li>
@@ -153,21 +217,22 @@
             <div class="col">
                 <div class="card h-100">
                     <!-- 기본 프로필 대문 이미지 소스 필요  -->
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="..."
-                    style="object-fit: cover;">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="card-img-top" alt="..." style="object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
                         <div class="card_down">
                             <!-- 기본 프로필 이미지 소스 필요  -->
                             <div class="profile_img">
-                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..."/>
+                                <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="..." />
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">이름</span>
                                 <span id="profile_mbti">MBTI</span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <ol class="breadcrumb" style="justify-content: flex-end;">
                     <li class="breadcrumb-item active" type="button">수정</li>
