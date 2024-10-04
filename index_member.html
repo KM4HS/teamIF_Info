@@ -1,214 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>멤버 소개</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="./header_style.css" />
     <style>
-      .card_wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        gap: 30px;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
-      .card-img-top {
-        height: 100%;
-      }
-      .card_down {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-      .profile_img {
-        width: 35px;
-        height: 35px;
-        border-radius: 70%;
-        overflow: hidden;
-      }
-      .profile_img > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .profile_txt {
-        display: flex;
-        flex-direction: column;
-      }
-      #sign_up_btn {
-        margin-top: 20px;
-      }
+        * {
+            font-family: "Gowun Dodum", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .card_wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            gap: 30px;
+        }
+
+        .card-img-top {
+            height: 100%;
+        }
+
+        .card_down {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile_img {
+            width: 35px;
+            height: 35px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .profile_img>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile_txt {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sign_up_btn {
+            margin-top: 20px;
+        }
+
+        .member_detail {
+            width: 500px;
+            display: flex;
+            flex-direction: row;
+            align-items: top;
+            padding: 10px;
+            gap: 20px;
+
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+        .detail_img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .detail_img>img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            text-align: center;
+        }
+
+        .detail_text {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <header class="header_wrap">
-      <a href="./index_home.html"><img src="./if.png" class="header_logo" /></a>
-      <div class="header_nav">
-        <p><a href="./index_member.html">팀원 소개</a></p>
-        <p><a href="./news_index.html">뉴스 피드</a></p>
-        <p><a href="https://teamsparta.notion.site/14-IF-1112dc3ef51481cabceed33d03e6a5d7" target="_blank">팀 노션</a></p>
-      </div>
+        <a href="./index_home.html"><img src="./if.png" class="header_logo" /></a>
+        <div class="header_nav">
+            <p><a href="./index_member.html">팀원 소개</a></p>
+            <p><a href="./news_index.html">뉴스 피드</a></p>
+            <p><a href="https://teamsparta.notion.site/14-IF-1112dc3ef51481cabceed33d03e6a5d7" target="_blank">팀 노션</a>
+            </p>
+        </div>
     </header>
     <div class="card_wrap">
-      <hr width="100%" color="lightgray" />
-      <h1>Introvert Feeling</h1>
-      <hr width="100%" color="lightgray" />
-      <div id="cards_member">
-        <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100%">
-          <div class="col">
-            <div class="card h-100">
-              <!-- 기본 프로필 대문 이미지 소스 필요  -->
-              <img
-                src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-                style="object-fit: cover"
-              />
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bold">최대 몇글자까지 할까요</h5>
-                <div class="card_down">
-                  <!-- 기본 프로필 이미지 소스 필요  -->
-                  <div class="profile_img">
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
-                  </div>
-                  <div class="profile_txt">
-                    <span id="profile_name">이름</span>
-                    <span id="profile_mbti">MBTI</span>
-                  </div>
+        <hr width="100%" color="lightgray">
+        <h1>Introvert Feeling</h1>
+        <hr width="100%" color="lightgray">
+        <div class="member_detail">
+            <div style="text-align: center;">
+                <div class="detail_img">
+                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                 </div>
-              </div>
+                <h5>이름</h5>
+                <p>MBTI</p>
+                <a href="..." style="text-decoration: none; color: gray">개발 블로그</a>
             </div>
-            <ol class="breadcrumb" style="justify-content: flex-end">
-              <li class="breadcrumb-item active" type="button">수정</li>
-              <li class="breadcrumb-item active" type="button">삭제</li>
-            </ol>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <!-- 기본 프로필 대문 이미지 소스 필요  -->
-              <img
-                src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-                style="object-fit: cover"
-              />
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bold">최대 몇글자까지 할까요</h5>
-                <div class="card_down">
-                  <!-- 기본 프로필 이미지 소스 필요  -->
-                  <div class="profile_img">
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
-                  </div>
-                  <div class="profile_txt">
-                    <span id="profile_name">이름</span>
-                    <span id="profile_mbti">MBTI</span>
-                  </div>
-                </div>
-              </div>
+            <div class="detail_text">
+                <h4>한마디</h4>
+                <h5>사용 언어</h5>
+                <span>예시</span><br>
+                <h5>장점</h5>
+                <span>아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                    좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    !!!!!!!!!!!!!!!!!
+                </span><br>
+                <h5>협업 스타일</h5>
+                <span>아주아주아주아주아주아주 긴 텍스트의 예시입니다 장점은 많이 쓸수록
+                    좋으니까요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    !!!!!!!!!!!!!!!!!</span>
             </div>
-            <ol class="breadcrumb" style="justify-content: flex-end">
-              <li class="breadcrumb-item active" type="button">수정</li>
-              <li class="breadcrumb-item active" type="button">삭제</li>
-            </ol>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <!-- 기본 프로필 대문 이미지 소스 필요  -->
-              <img
-                src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-                style="object-fit: cover"
-              />
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bold">최대 몇글자까지 할까요</h5>
-                <div class="card_down">
-                  <!-- 기본 프로필 이미지 소스 필요  -->
-                  <div class="profile_img">
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
-                  </div>
-                  <div class="profile_txt">
-                    <span id="profile_name">이름</span>
-                    <span id="profile_mbti">MBTI</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ol class="breadcrumb" style="justify-content: flex-end">
-              <li class="breadcrumb-item active" type="button">수정</li>
-              <li class="breadcrumb-item active" type="button">삭제</li>
-            </ol>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <!-- 기본 프로필 대문 이미지 소스 필요  -->
-              <img
-                src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-                style="object-fit: cover"
-              />
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bold">최대 몇글자까지 할까요</h5>
-                <div class="card_down">
-                  <!-- 기본 프로필 이미지 소스 필요  -->
-                  <div class="profile_img">
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
-                  </div>
-                  <div class="profile_txt">
-                    <span id="profile_name">이름</span>
-                    <span id="profile_mbti">MBTI</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ol class="breadcrumb" style="justify-content: flex-end">
-              <li class="breadcrumb-item active" type="button">수정</li>
-              <li class="breadcrumb-item active" type="button">삭제</li>
-            </ol>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <!-- 기본 프로필 대문 이미지 소스 필요  -->
-              <img
-                src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="card-img-top"
-                alt="..."
-                style="object-fit: cover"
-              />
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bold">최대 몇글자까지 할까요</h5>
-                <div class="card_down">
-                  <!-- 기본 프로필 이미지 소스 필요  -->
-                  <div class="profile_img">
-                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
-                  </div>
-                  <div class="profile_txt">
-                    <span id="profile_name">이름</span>
-                    <span id="profile_mbti">MBTI</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ol class="breadcrumb" style="justify-content: flex-end">
-              <li class="breadcrumb-item active" type="button">수정</li>
-              <li class="breadcrumb-item active" type="button">삭제</li>
-            </ol>
-          </div>
         </div>
-      </div>
-      <button id="sign_up_btn" type="button" class="btn btn-outline-secondary btn-lg">가입하기</button>
+        <div id="cards_member">
+            <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100%;">
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
+                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="..." style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
+                            <div class="card_down">
+                                <!-- 기본 프로필 이미지 소스 필요  -->
+                                <div class="profile_img">
+                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="..." />
+                                </div>
+                                <div class="profile_txt">
+                                    <span id="profile_name">이름</span>
+                                    <span id="profile_mbti">MBTI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active" type="button">수정</li>
+                        <li class="breadcrumb-item active" type="button">삭제</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
+                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="..." style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
+                            <div class="card_down">
+                                <!-- 기본 프로필 이미지 소스 필요  -->
+                                <div class="profile_img">
+                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="..." />
+                                </div>
+                                <div class="profile_txt">
+                                    <span id="profile_name">이름</span>
+                                    <span id="profile_mbti">MBTI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active" type="button">수정</li>
+                        <li class="breadcrumb-item active" type="button">삭제</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
+                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="..." style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
+                            <div class="card_down">
+                                <!-- 기본 프로필 이미지 소스 필요  -->
+                                <div class="profile_img">
+                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="..." />
+                                </div>
+                                <div class="profile_txt">
+                                    <span id="profile_name">이름</span>
+                                    <span id="profile_mbti">MBTI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active" type="button">수정</li>
+                        <li class="breadcrumb-item active" type="button">삭제</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
+                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="..." style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
+                            <div class="card_down">
+                                <!-- 기본 프로필 이미지 소스 필요  -->
+                                <div class="profile_img">
+                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="..." />
+                                </div>
+                                <div class="profile_txt">
+                                    <span id="profile_name">이름</span>
+                                    <span id="profile_mbti">MBTI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active" type="button">수정</li>
+                        <li class="breadcrumb-item active" type="button">삭제</li>
+                    </ol>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- 기본 프로필 대문 이미지 소스 필요  -->
+                        <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="..." style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">최대 몇글자까지 할까요</h5>
+                            <div class="card_down">
+                                <!-- 기본 프로필 이미지 소스 필요  -->
+                                <div class="profile_img">
+                                    <img src="https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        alt="..." />
+                                </div>
+                                <div class="profile_txt">
+                                    <span id="profile_name">이름</span>
+                                    <span id="profile_mbti">MBTI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb" style="justify-content: flex-end;">
+                        <li class="breadcrumb-item active" type="button">수정</li>
+                        <li class="breadcrumb-item active" type="button">삭제</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <button id="sign_up_btn" type="button" class="btn btn-outline-secondary btn-lg">가입하기</button>
     </div>
-  </body>
+
+    <script type="module" src="script_member.js"></script>
+</body>
+
 </html>
