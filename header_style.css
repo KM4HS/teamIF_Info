@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+* {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .header_wrap {
   height: 150px;
 
@@ -24,15 +32,15 @@
   justify-content: space-around;
 }
 
-.header_nav > p {
+.header_nav>p {
   margin-right: 15px;
 }
 
-.header_nav > p > a:link {
+.header_nav>p>a:link {
   text-decoration: none;
 }
 
-.header_nav > p > a:visited {
+.header_nav>p>a:visited {
   color: black;
   text-decoration: none;
 }

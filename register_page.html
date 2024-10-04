@@ -33,6 +33,7 @@
             let strength_input = $('#strength_input').val();
             let style_input = $('#style_input').val();
             let free_input = $('#free_input').val();
+            let blog_input = $('#blog_input').val();
 
             let doc = {
                 'name_input': name_input,
@@ -40,7 +41,8 @@
                 'mbti_input': mbti_input,
                 'strength_input': strength_input,
                 'style_input': style_input,
-                'free_input': free_input
+                'free_input': free_input,
+                'blog_input': blog_input
             };
 
             await addDoc(collection(db, "TEAMIF_INFO"), doc);
@@ -59,9 +61,10 @@
             let strength_input = row['strength_input'];
             let style_input = row['style_input'];
             let free_input = row['free_input'];
+            let blog_input = row['blog_input'];
         })
         */
-       
+
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
@@ -124,6 +127,10 @@
         <div class="mb-3">
             <label for="free_input" class="form_label">한마디</label>
             <textarea class="form-control" id="free_input" style="height: 100px"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="blog_input" class="form_label">블로그 주소</label>
+            <textarea class="form-control" id="blog_input" style="height: 40px"></textarea>
         </div>
         <button type="button" class="btn btn-dark" id="register_button">Register</button>
     </div>
