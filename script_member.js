@@ -30,18 +30,15 @@ querySnapshot.forEach((docSnapshot) => {
     let free = data['free_input'];
     let mbti = data['mbti_input'];
 
-    // 이미지 예외처리
-    let url = "https://images.unsplash.com/photo-1618005479492-bc36dc8aeaf2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
     let cardHTML = `
             <div class="col">
                 <div class="card h-100">
-                    <img src="${url}" class="card-img-top" style="object-fit: cover;"/>
+                    <img src="${main_image}" onerror="this.src='./default_img.png';" class="card-img-top" style="object-fit: cover;"/>
                     <div class="card-body">
                         <h5 class="card-title" style="font-weight: bold;">${free}</h5>
                         <div class="card_down">
                             <div class="profile_img">
-                                <img src="${url}"/>
+                                <img src="${profile_image}" onerror="this.src='./default_img.png';"/>
                             </div>
                             <div class="profile_txt">
                                 <span id="profile_name">${name}</span>
