@@ -164,6 +164,28 @@ $('.delete_button').click(async function (e) {
     }
 });
 
+// 멤버 상세보기 버튼 클릭 -> 상세보기 페이지에 정보 출력
+// TODO: 상세보기창 토글기능 필요
+$('.detail_view').click(async function (e) {
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
+    loadDetail(doc_id);
+})
+
+let detail_Visible = false; // 상세보기 표시 여부를 저장하는 변수
+
+$('.detail_view').click(async function (e) {
+    let doc_id = e.target.parentElement.getAttribute('data-doc');
+
+    if (detail_Visible) {  // 이미 상세보기가 표시 중이면 숨기기
+        $('#card_toggle').hide();
+        detail_Visible = false;
+    } else {  // 상세보기가 숨겨져 있으면 표시
+        loadDetail(doc_id);
+        $('#card_toggle').show();
+        detail_Visible = true;
+    }
+});
+
 async function loadDetail(docId) {
     const docRef = doc(db, "TEAMIF_INFO", docId);
     const docSnap = await getDoc(docRef);
@@ -184,10 +206,3 @@ async function loadDetail(docId) {
         alert("해당 팀원 정보를 찾을 수 없습니다.");
     }
 }
-
-// 멤버 상세보기 버튼 클릭 -> 상세보기 페이지에 정보 출력
-// TODO: 상세보기창 토글기능 필요
-$('.detail_view').click(async function (e) {
-    let doc_id = e.target.parentElement.getAttribute('data-doc');
-    loadDetail(doc_id);
-})
